@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Verx Code Scanner</title>
+    <meta name="description" content="The Verx code scanner application.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/verx.css">
+    <link rel="stylesheet" href="css/colors.css">
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <div class="background-primary-0" style="display: block; color: white; height: 42px;">
+        <img style="margin-left: 10px; display: inline;" src="img/Verx Logo 25px.png" alt="Verx Codes" />
+        <button class="background-primary-1" style="display: inline; color: white; padding: 5px; border: none; margin-right: 10px;">
+            <a href="index.html" style="color: white; text-decoration: none;">Scan</a>
+        </button>
+    </div>
+    <div style="margin: 2%;">
+        <button style="margin-bottom: 1%; display: inline-block; color: white; background: #802415;" class="styled">For
+            Makers</button> Click if you'd like to use <a href="https://verx.codes">Verx.codes</a> for your own creations.
+        <p><a href="https://verx.codes">Verx.codes</a> uses an Eliptic Curve Digital Signature Algorithm (ECDSA) to
+            assist in assuring that items sent
+            to you truly come from whom they say they come.
+            Verx Codes are QR codes which are crytpographically signed with the public key of a maker (a company,
+            artist, manufacturer, etc.).
+            Below is an illustritive example of the information which is displayed when you successfully scan a Verx
+            code:
+        </p>
+        <div style="margin: 0 auto; text-align: left;">
+            <button style="margin-left: 10%; margin-bottom: 1%; display: inline-block; color: white;" id="sigok" class="styled">Valid
+                Code!</button>
+            <table id="output" class="tg" border="1">
+                <tr>
+                    <td class="outrow">Issuer's Public Key URL:</td>
+                    <td id="pubkeyURL" class="outrow">https://ourmakersite.org/ourpublickey.key</td>
+                </tr>
+                <tr>
+                    <td class="outrow">Expiration:</td>
+                    <td id="expiration" class="outrow">10-Feb-2019</td>
+                </tr>
+                <tr>
+                    <td class="outrow">Product Code:</td>
+                    <td id="prodcode" class="outrow">PBR-34235i</td>
+                </tr>
+                <tr>
+                    <td class="outrow">Batch:</td>
+                    <td id="batch" class="outrow">3124</td>
+                </tr>
+                <tr>
+                    <td class="outrow">Serial Number:</td>
+                    <td id="sernum" class="outrow">BR23423412345E4</td>
+                </tr>
+                <tr>
+                    <td class="outrow">UUID:</td>
+                    <td id="uuid" class="outrow">8e9bc225-c34a-4e33-bbb9-3a44e2e73e4a</td>
+                </tr>
+                <tr>
+                    <td class="outrow">Other Info:</td>
+                    <td id="other" class="outrow">Info: https://ourmakersite.org/moreinfo.html</td>
+                </tr>
+            </table>
+        </div>
+        <p>The entries: Expiration; Product Code; Batch; Serial Number; and Other Info, are filled at the maker's
+            discretion. The entry names are suggestions only, but are also meant to enable product tracking, recalls,
+            and meet regulatory requirements.</p>
+        <p>The entry, Issuer's Public Key URL, is a URL to a publicly available text file containing the maker's public
+            key. This public key is used to verify the cryptographic integrity of the QR code signed with the maker's
+            secret key.</p>
+        <p>The entry, UUID, is a Universally Unique Identifier, which is set uniquely at the time of the QR codes
+            creation. Each QR code has it's own UUID.
+        </p>
+        <p>
+            Upon successfully scanning a Verx QR code, <a href="https://verx.codes">Verx.codes</a> will signal the
+            maker's website with the UUID of the QR code scanned,
+            and, if you allow it, you, the user's, physical location. This allows the maker to possibly track the use
+            of their product and warn you
+            if there might be a possible forgery. Additionally, the maker can forward to you, the user, a supplemental
+            URL link in order to provide additional
+            information on the product or the particular UUID scanned.
+        </p>
+        <p>
+            A forger could copy an individual QR code in it's entirety, but should not be able modify it in any way
+            such that it would still be validated by the true maker's public key. Supplying the UUID back to the maker
+            allows them to count how many times
+            that particular UUID has been scanned and potentially alert you to cases where the QR code has been used
+            excessively indicating a potentially copied QR code.
+        </p>
+        <p>For more information or to get involved, see:</p><a href="https://github.com/verxcodes">Our GitHub Site</a>
+    </div>
+</body>
+<script>
+    $("#sigok").css("background", "#003F13");
+    $("#sigok").text("Valid Code!");
+</script>
+
+</html>

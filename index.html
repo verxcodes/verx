@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/verx.css">
+    <link rel="stylesheet" href="css/colors.css">
 </head>
 
 <body>
@@ -34,10 +35,21 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
-    <div style="margin: 0 auto;"><video height="350px" playsinline id="preview"></video></div>
-    <div style="margin: 0 auto;"><button id="sigok" class="styled" style="display: block;">Unknown</button></div>
-    <div style="margin: 0 auto;">
-        <table id="output" class="tg" border="1" style="display: block;">
+
+    <div class="background-primary-0" style="display: block; color: white; height: 42px;">
+        <img style="margin-left: 10px; display: inline;" src="img/Verx Logo 25px.png" alt="Verx Codes" />
+        <button class="background-primary-1" style="display: inline; color: white; padding: 5px; border: none; margin-right: 10px;">
+        <a href="info.html" style="color: white; text-decoration: none;">Info</a>
+        </button>
+    </div>
+    <div style="margin: 0 auto; text-align: center;">
+        <video style="display: inline-block;" height="350px" playsinline id="preview"></video>
+    </div>
+    <div style="margin: 20px; text-align: center;">
+        <button style="display: inline-block; color: white;" id="sigok" class="styled">Unknown</button>
+    </div>
+    <div style="margin: 0 auto; text-align: center;">
+        <table style="display: none; border-collapse: collapse;" id="output" class="tg" border="1">
             <tr>
                 <td class="outrow">Issuer's Public Key URL:</td>
                 <td id="pubkeyURL" class="outrow"></td>
@@ -68,7 +80,7 @@
             </tr>
         </table>
     </div>
-
+    </div>
     <audio id="soundFX" preload="auto">
         <source src="media/sounds/beep-03.wav">
     </audio>
@@ -83,6 +95,7 @@
         var soundFX2 = $('#soundFX2');
 
         let scanner = new Instascan.Scanner({
+            mirror: false,
             video: document.getElementById('preview')
         });
 
@@ -139,6 +152,8 @@
             $("#uuid").text(payload.UUID);
             $("#other").text(payload.other);
 
+            $("#output").css("display", "inline-block");
+
             var sig = tokens[2];
 
             request.onload = function () {
@@ -148,13 +163,13 @@
                 var Validity = KJUR.jws.JWS.verifyJWT(content, pubkey, { alg: ['ES384'] });
 
                 if (Validity === true) {
-                    $("#sigok").css("background", "green");
+                    $("#sigok").css("background", "#003F13");
                     $("#sigok").text("Valid Code!");
-                    $('#pubkeyURL').css("background", "green");
+                    $('#pubkeyURL').css("background", "#003F13");
                     $('#pubkeyURL').css("color", "white");
                     soundFX2[0].play();
                 } else {
-                    $("#sigok").css("background", "red");
+                    $("#sigok").css("background", "#550C00");
                     $("#sigok").text("Invalid!!!");
                     $('#pubkeyURL').css("background", "white");
                     $('#pubkeyURL').css("color", "black");
